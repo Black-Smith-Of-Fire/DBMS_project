@@ -1,1 +1,0 @@
-This is a grocery management project done in python flask using the mysql database

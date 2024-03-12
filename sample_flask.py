@@ -11,35 +11,42 @@ mycursor = mydb.cursor()
 
 app = Flask(__name__)  
 
-@app.route('/index')
+# @app.route('/')
+# def update():
+#   if request.method == 'POST':
+#     result=request.form
+#     name= result['Name']
+#     mycursor.execute("INSERT INTO %s VALUES()")
+
+@app.route('/customer')
 def customer():
   mycursor.execute("SELECT * FROM customer")
   value = mycursor.fetchall()
-  return render_template("index.html",data=value,name=customer)
+  return render_template("customer.html",data=value,name=customer)
 
 @app.route('/products')
 def product():
   mycursor.execute("SELECT * FROM product")
   value2 = mycursor.fetchall()
-  return render_template("index.html",data=value2,name=product)
+  return render_template("customer.html",data=value2,name=product)
 
 @app.route('/administrator')
 def admin():
   mycursor.execute("SELECT * FROM administrator")
   value3 = mycursor.fetchall()
-  return render_template("index.html",data=value3,name=administrator)
+  return render_template("customer.html",data=value3,name=administrator)
   
 @app.route('/cart')
 def cart():
   mycursor.execute("SELECT * FROM cart")
   value4 = mycursor.fetchall()
-  return render_template("index.html",data=value4,name=cart)
+  return render_template("customer.html",data=value4,name=cart)
 
 @app.route('/invoice')
 def invoice():
   mycursor.execute("SELECT * FROM invoice")
   value5 = mycursor.fetchall()
-  return render_template("index.html",data=value5,name=invoice)
+  return render_template("customer.html",data=value5,name=invoice)
 
 if __name__ == "__main__":
   app.run(debug=True) 

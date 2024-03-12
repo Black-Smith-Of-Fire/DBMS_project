@@ -51,8 +51,16 @@ tr{
  background-color: #fafafa;
  font-family: 'Montserrat', sans-serif;
 }
+
+tr:hover{
+  background-color: green;
+}
+
 tr:nth-child(even){
  background-color: #eeeeee;
+}
+tr:nth-child(even):hover{
+  background-color: green;
 }
 .update-btn{
     position: absolute;
