@@ -1,34 +1,53 @@
-{% extends 'base.html' %}
-{% block head %}
-  <title>Grocery Store management System</title>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <title>Customer Page</title>
+</head>
+<body>
 
-{% block body %}
 <div class="content">
-    <h1 style="text-align: center">Customer</h1>
-    <table class="table" id ="tbl">
-    <tr>
-        <th>Id</th>
-        <th>Email</th>
-        <th>Location</th>
-        <th>Name</th>
-        <th>DOB</th>
-        <th>Creation date</th>
-        <th>Modification date</th>
-        <th>Postcode</th>
-    </tr>
-    {% for row in data %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-            <td>{{ row[5] }}</td>
-            <td>{{ row[6] }}</td>
-            <td>{{ row[7] }}</td>
-        </tr>
-    {% endfor %}
-    </table>
+    <h1>Customers</h1>
+    <div class="navbar">
+        <ul>
+            <li><a href="/product">Product</a></li>
+            <li><a href="/customer">Customer</a></li>
+        </ul>
+    </div>
+    <form method="POST" action="/customer">
+        <table>
+            <tr>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Product</th>
+                <th>Product Quantity</th>
+                <th>Product Price</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td><input type="text" name="customer_id" placeholder="Customer ID"></td>
+                <td><input type="text" name="customer_name" placeholder="Customer Name"></td>
+                <td><input type="text" name="email" placeholder="Email"></td>
+                <td><input type="text" name="product" placeholder="Product"></td>
+                <td><input type="text" name="product_quantity" placeholder="Quantity"></td>
+                <td><input type="text" name="product_price" placeholder="Price"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
 </div>
-{% endblock %}
+
+</body>
+</html>

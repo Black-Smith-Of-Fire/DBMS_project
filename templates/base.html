@@ -8,48 +8,25 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    {% block body %} 
-    {% endblock %}
-    <button type="button" class="update-btn" onclick="updateFunction()">Update</button>
-    <button type="button" class="delete-btn">Delete</button>
-    <script>
-var table = document.getElementById('tbl');
-var cells = table.getElementsByTagName('td');
-var temporaryValue = { row: null, column: null, value: '' };
 
-for (var i = 0; i < cells.length; i++) {
-    cells[i].onclick = function () {
-        var rowIndex = this.parentNode.rowIndex;
-        var columnIndex = this.cellIndex;
+    <div class="navbar">
+        <ul>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/product">Product</a></li>
+            <li><a href="/customer">Customer</a></li>
+        </ul>
+    </div>
 
-        var input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.value = this.innerHTML;
-        input.style.width = this.offsetWidth - (this.clientLeft * 2) + "px";
-        input.style.height = this.offsetHeight - (this.clientTop * 2) + "px";
-        input.style.border = "0px";
-        input.style.fontFamily = "inherit";
-        input.style.fontSize = "inherit";
-        input.style.textAlign = "inherit";
-        input.style.backgroundColor = "LightGoldenRodYellow";
-
-        // Store information about the row, column, and value
-        temporaryValue.row = rowIndex;
-        temporaryValue.column = columnIndex;
-
-        // Store the value when the input field loses focus
-        input.onblur = function () {
-            temporaryValue.value = input.value;
-            console.log(temporaryValue); // Log the information for testing
-        };
-
-        this.innerHTML = '';
-        this.style.cssText = 'padding: 0px 0px';
-        this.append(input);
-        this.firstElementChild.select();
-    };
-}
-    </script>
-    
+    <table id="data-table" class="table">
+        <thead>
+            <tr>
+                {% block table_header %}{% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block table_content %}{% endblock %}
+        </tbody>
+    </table>
+    {% block body %}{% endblock %}
 </body>
 </html>

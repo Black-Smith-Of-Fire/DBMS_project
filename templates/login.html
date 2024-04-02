@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="main.css"> <!-- Link to main.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .wrapper {
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .input-area {
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .error {
+            display: none;
+            color: #f00;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .sign-txt {
+            text-align: center;
+        }
+
+        .sign-txt a {
+            color: #007bff;
+        }
+
+        .sign-txt a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>Login Form</header>
+        <form action="/login" method="post" onsubmit="return validateForm()"> <!-- Added onsubmit attribute -->
+            <div class="field email">
+                <div class="input-area">
+                    <input type="text" placeholder="Email Address" name="email">
+                    <i class="icon fas fa-envelope"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Email can't be blank</div>
+            </div>
+            <div class="field password">
+                <div class="input-area">
+                    <input type="password" placeholder="Password" name="password">
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Password can't be blank</div>
+            </div>
+            <div class="pass-txt"><a href="#">Forgot password?</a></div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementsByName("email")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+
+            // Check if email and password are "user"
+            if (email === "user" && password === "user") {
+                // Redirect to the customer page after successful login
+                window.location.href = "customer";
+                return false; // Prevent form submission
+            } else {
+                // Perform other validation or show error messages if needed
+                return true; // Allow form submission
+            }
+        }
+    </script>
+</body>
+
+</html>

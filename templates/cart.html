@@ -1,32 +1,31 @@
 {% extends 'base.html' %}
 {% block head %}
- <title>Grocery Store management System</title>
+  <title>Grocery Store management System</title>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1>Cart</h1>
-    <table>
-    <tr>
-        <th>Id</th>
-        <th>Creation Date</th>
-        <th>Total</th>
-        <th>Products</th>
-        <th>No of products</th>
-        <th>Price</th>
-        <th>Modification date</th>
-    </tr>
-    {% for row in data %}
+    <h1 style="text-align: center">Cart</h1>
+    <form class='form-style' method="post" action="/cart">
+        <input type="number" name="id" required/>
+        <!-- <input type="number" name="cust_id" required/>
+        <input type="date" name="date" required/> -->
+        <input type="submit"/>    
+    </form>
+    <table class="table" id ="tbl">
         <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-            <td>{{ row[5] }}</td>
-            <td>{{ row[6] }}</td>
+            <th>id</th>
+            <th>customer_id</th>
+            <th>purchase_date</th>
         </tr>
-    {% endfor %}
-    </table>
+        {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>               
+                <td>{{ row[2] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    
 </div>
 {% endblock %}
