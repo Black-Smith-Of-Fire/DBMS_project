@@ -8,8 +8,25 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+
+    <div class="navbar">
+        <ul>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/product">Product</a></li>
+            <li><a href="/customer">Customer</a></li>
+        </ul>
+    </div>
+
+    <table id="data-table" class="table">
+        <thead>
+            <tr>
+                {% block table_header %}{% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block table_content %}{% endblock %}
+        </tbody>
+    </table>
     {% block body %}{% endblock %}
-    <button type="button" class="update-btn">Update</button>
-    <button type="button" class="delete-btn">Delete</button>
 </body>
 </html>

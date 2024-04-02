@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <title>Product Page</title>
+</head>
+<body>
+
+<div class="content">
+    <h1>Product</h1>
+    <div class="navbar">
+        <ul>
+            <li><a href="/product">Product</a></li>
+            <li><a href="/customer">Customer</a></li>
+        </ul>
+    </div>
+    <form method="POST" action="/product">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td><input type="text" name="product_id" placeholder="ID"></td>
+                <td><input type="text" name="product_name" placeholder="Product Name"></td>
+                <td><input type="text" name="price" placeholder="Price"></td>
+                <td><input type="text" name="quantity" placeholder="Quantity"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>
